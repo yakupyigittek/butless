@@ -10,7 +10,7 @@ const port = 3000;
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'deneme',
+  database: 'ders_notu_uygulamasi',  // Veritabanı adı
   port: 5432,
 });
 
@@ -36,15 +36,13 @@ app.get('/sign_in', (req, res) => {
   res.sendFile(path.join(__dirname, 'sign_in.html'));
 });
 
-
-
 // Kayıt olma işlemi
 app.post('/register', (req, res) => {
-  const { name, email, password } = req.body;
+  const { ogrenci_id, isim, soyisim, bolum_id, email, sifre } = req.body;
 
   pool.query(
-    'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',
-    [name, email, password],
+    'INSERT INTO ogrenci (ogrenci_id, isim, soyisim, bolum_id, email, sifre) VALUES ($1, $2, $3, $4, $5, $6)',
+    [ogrenci_id, isim, soyisim, bolum_id, email, sifre],
     (error) => {
       if (error) {
         console.error('Veritabanı hatası:', error.message);
@@ -58,11 +56,11 @@ app.post('/register', (req, res) => {
 
 // Giriş yapma işlemi
 app.post('/signin', (req, res) => {
-  const { email, password } = req.body;
+  const { email, sifre } = req.body;
 
   pool.query(
-    'SELECT * FROM users WHERE email = $1 AND password = $2',
-    [email, password],
+    'SELECT * FROM ogrenci WHERE email = $1 AND sifre = $2',
+    [email, sifre],
     (error, result) => {
       if (error) {
         console.error('Veritabanı hatası:', error.message);
