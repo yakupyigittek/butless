@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="sign_up.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h1>Get Started Now</h1>
+        <form action="/register" method="post">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required />
+
+          <div class="checkbox-container">
+            <input type="checkbox" id="terms" required />
+            <label for="terms">I agree to the <a href="#">terms & policy</a></label>
+          </div>
+
+          <button type="submit" class="signup-button">Signup</button>
+        </form>
+        <div class="divider">or</div>
+        <div class="social-login">
+          <button class="google-button">
+            <img src="/images/google.png" alt="Google Logo" />
+            Sign in with Google
+          </button>
+          <button class="apple-button">
+            <img src="/images/apple.png" alt="Apple Logo" />
+            Sign in with Apple
+          </button>
+        </div>
+        <p class="signin-link">
+          Already have an account? <a href="/sign_in">Sign In</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
